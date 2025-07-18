@@ -37,7 +37,7 @@ public class ItemThrowController : MonoBehaviour
             Rigidbody2D rb = itemThrow.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.velocity = direction * 5f; 
+                rb.linearVelocity = direction * 5f; 
             }
         }
     }
