@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barrels:
   - barrelPrefab: {fileID: 4139833152112879336, guid: 2ca2304606a4d2247b45df73d4b73e7e, type: 3}
-    maxHit: 1
-    jumlah: 10
+    jumlah: 20
+  spawnSpeed: 2
+  barrelSpeed: 2

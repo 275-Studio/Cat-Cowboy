@@ -5,4 +5,6 @@ using UnityEngine;
 public class WaveData : ScriptableObject
 {
     public List<BarrelData> barrels;
+    public float spawnSpeed;
+    public float barrelSpeed;
 }

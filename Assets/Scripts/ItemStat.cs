@@ -6,7 +6,10 @@ public class ItemStat : MonoBehaviour
 {
     public Stats stats;
     public static ItemStat instance;
-    public TextMeshProUGUI text;
+    private PlayerStats playerStats;
+    private HomeStats homeStats;
+    public TextMeshProUGUI coinText;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
@@ -19,21 +22,20 @@ public class ItemStat : MonoBehaviour
         {
             Destroy(gameObject);
         }   
-    }
-
-    void Start()
-    {
         stats = new Stats
         {
             homeStats = new HomeStats
             {
                 maxHealthHome = 100f,
+                currentHealthHome = 100f,
                 homeArmor = 10f
             },
             playerStats = new PlayerStats
             {
                 coin = 100,
-                reloadTime = 1f,
+                reloadTime = 2f,
+                bulletSpeed = 3f,
+                maxBulletCapacity = 10,
             },
             itemUpgrade = new ItemUpgrade
             {
@@ -42,42 +44,20 @@ public class ItemStat : MonoBehaviour
         };
     }
 
+    void Start()
+    {
+        playerStats = stats.playerStats;
+        homeStats = stats.homeStats;
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        text.text = stats.homeStats.maxHealthHome.ToString();
+        coinText.text = playerStats.coin.ToString();
     }
 
-    public void buyUpdate(int btnIndex)
-    {
-        if (btnIndex == 0)
-        {
-            // if()
-            Debug.Log("max home health added!");
-            maxHomeStats();
-        }
-        else if(btnIndex == 1)
-        {
-            
-        }
-        else if(btnIndex == 2)
-        {
-            
-        }
-    }
 
-    private void maxHomeStats()
-    {
-        stats.homeStats.maxHealthHome += 10;
-    }
 
-    private void maxReloadSpeed()
-    {
-        stats.playerStats.reloadTime += 0.5f;
-    }
-
-    private void homeArmot()
-    {
-        stats.homeStats.homeArmor += 1;
-    }
+    
 }

@@ -12,8 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0501d6d29b7ebe448ffdd715714a956, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  weaponName: ShotGun
-  bulletSpeed: 1
-  maxBulletCapacity: 10
-  reloadTime: 1
+  weaponName: Shotgun
   bulletPrefab: {fileID: 91803584395833600, guid: e75e43f817a04ce418a8287beb381482, type: 3}

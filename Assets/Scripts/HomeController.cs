@@ -8,14 +8,15 @@ public class HomeController : MonoBehaviour
     private void Start()
     {
         homeStats = ItemStat.instance.stats.homeStats;
+        homeStats.currentHealthHome = homeStats.maxHealthHome;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Barrel"))
         {
-            homeStats.maxHealthHome -= 10;
-            Debug.Log(homeStats.maxHealthHome);
+            homeStats.currentHealthHome -= 10;
+            Debug.Log(homeStats.currentHealthHome);
             Destroy(other.gameObject);
         }
     }

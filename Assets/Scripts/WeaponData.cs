@@ -4,8 +4,6 @@ using UnityEngine;
 public class WeaponData : ScriptableObject
 {
     public string weaponName;
-    public float bulletSpeed;
-    public int maxBulletCapacity;
-    public float reloadTime;
     public GameObject bulletPrefab;
+    public bool hasThisWeapon;
 }

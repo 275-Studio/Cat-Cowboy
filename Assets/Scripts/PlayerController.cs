@@ -8,11 +8,11 @@ public class PlayerController : MonoBehaviour
     public Transform firePoint;
     private int currentWeaponIndex = 0;
     private WeaponData CurrentWeapon => weapons[currentWeaponIndex];
+    private PlayerStats playerStats;
 
     [Header("Reloading State")]
     private bool isReloading = false;
     private bool isOutOfAmmo = false;
-
     private int currentBullet;
 
     private void Start()
@@ -23,15 +23,17 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
+        playerStats = ItemStat.instance.stats.playerStats;
+
         EquipWeapon(currentWeaponIndex);
     }
 
     private void Update()
     {
+        if (Time.timeScale == 0f) return;
         AimAtMouse();
         HandleShooting();
         HandleReload();
-        HandleWeaponSwitch();
     }
 
     private void AimAtMouse()
@@ -50,7 +52,6 @@ public class PlayerController : MonoBehaviour
 
             if (currentBullet == 0 && !isOutOfAmmo)
             {
-                Debug.Log("Out of Bullets!");
                 isOutOfAmmo = true;
             }
         }
@@ -58,49 +59,66 @@ public class PlayerController : MonoBehaviour
 
     private void HandleReload()
     {
-        if (Input.GetKeyDown(KeyCode.R) && currentBullet < CurrentWeapon.maxBulletCapacity && !isReloading)
+        if (Input.GetKeyDown(KeyCode.R) && currentBullet < playerStats.maxBulletCapacity && !isReloading)
         {
             StartCoroutine(Reload());
         }
     }
-
-    private void HandleWeaponSwitch()
-    {
-        if (Input.GetKeyDown(KeyCode.Q)) // Ganti senjata dengan tombol Q
-        {
-            currentWeaponIndex = (currentWeaponIndex + 1) % weapons.Length;
-            EquipWeapon(currentWeaponIndex);
-        }
-    }
-
     private void EquipWeapon(int index)
     {
         if (index < 0 || index >= weapons.Length)
         {
-            Debug.LogWarning("Index senjata tidak valid.");
             return;
         }
 
-        currentBullet = weapons[index].maxBulletCapacity;
+        currentBullet = playerStats.maxBulletCapacity;
         isReloading = false;
         isOutOfAmmo = false;
-
-        Debug.Log($"Weapon switched to: {weapons[index].name}");
     }
 
     private void Shoot()
     {
         Transform spawnPoint = firePoint != null ? firePoint : transform;
-        GameObject bullet = Instantiate(CurrentWeapon.bulletPrefab, spawnPoint.position, spawnPoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().linearVelocity = spawnPoint.up * CurrentWeapon.bulletSpeed;
+
+        if (currentWeaponIndex == 1)
+        {
+            float spreadAngle = 15f;
+            int bulletCount = 3;
+
+            float startAngle = -spreadAngle;
+            float angleStep = spreadAngle;
+
+            for (int i = 0; i < bulletCount; i++)
+            {
+                float angle = startAngle + i * angleStep;
+                Quaternion rotation = Quaternion.Euler(0, 0, angle) * spawnPoint.rotation;
+
+                GameObject bullet = Instantiate(CurrentWeapon.bulletPrefab, spawnPoint.position, rotation);
+                Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.linearVelocity = bullet.transform.up * playerStats.bulletSpeed;
+                }
+            }
+        }
+        else
+        {
+            GameObject bullet = Instantiate(CurrentWeapon.bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = spawnPoint.up * playerStats.bulletSpeed;
+            }
+        }
     }
+
 
     private IEnumerator Reload()
     {
         isReloading = true;
         Debug.Log("Reloading...");
-        yield return new WaitForSeconds(CurrentWeapon.reloadTime);
-        currentBullet = CurrentWeapon.maxBulletCapacity;
+        yield return new WaitForSeconds(ItemStat.instance.stats.playerStats.reloadTime);
+        currentBullet = playerStats.maxBulletCapacity;
         isOutOfAmmo = false;
         isReloading = false;
         Debug.Log("Reloaded!");

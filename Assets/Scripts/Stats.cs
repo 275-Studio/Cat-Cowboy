@@ -13,6 +13,7 @@ public class Stats
 public class HomeStats
 {
     public float maxHealthHome;
+    public float currentHealthHome;
     public float homeArmor;
 }
 
@@ -20,6 +21,8 @@ public class HomeStats
 public class PlayerStats
 {
     public float reloadTime;
+    public float bulletSpeed;
+    public int maxBulletCapacity;
     public int coin;
 }
 
