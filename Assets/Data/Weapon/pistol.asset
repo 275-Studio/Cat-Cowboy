@@ -13,8 +13,5 @@ MonoBehaviour:
   m_Name: pistol
   m_EditorClassIdentifier: 
   weaponName: pistol
-  bulletSpeed: 10
-  maxBulletCapacity: 10
-  reloadTime: 2
   bulletPrefab: {fileID: 7487784241290382838, guid: c137faafff67227439fc100aef40c5d7, type: 3}
-  dmg: 0
+  hasThisWeapon: 1

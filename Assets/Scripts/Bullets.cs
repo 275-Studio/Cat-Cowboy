@@ -17,6 +17,16 @@ public class Bullets : MonoBehaviour
                 barrel.TakeHit();
             }
 
+            ItemStat.instance.stats.playerStats.destroyedBarrels += 50/2 * 3;
+
+            Destroy(gameObject);
+        } else if (other.gameObject.CompareTag("chest"))
+        {
+            Chest chest = other.gameObject.GetComponent<Chest>();
+            if (chest != null)
+            {
+                chest.TakeHit();
+            }
             Destroy(gameObject);
         }
     }

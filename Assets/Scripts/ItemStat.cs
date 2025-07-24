@@ -32,14 +32,16 @@ public class ItemStat : MonoBehaviour
             },
             playerStats = new PlayerStats
             {
-                coin = 100,
+                coin = 1000,
                 reloadTime = 2f,
                 bulletSpeed = 3f,
                 maxBulletCapacity = 10,
+                destroyedBarrels = 0,
             },
             itemUpgrade = new ItemUpgrade
             {
                 bomb = 0,
+                timeFrezee = 0f,
             }
         };
     }
@@ -56,8 +58,4 @@ public class ItemStat : MonoBehaviour
     {
         coinText.text = playerStats.coin.ToString();
     }
-
-
-
-    
 }

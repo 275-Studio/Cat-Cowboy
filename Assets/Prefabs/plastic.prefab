@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2677740722231065440}
   - component: {fileID: 7891939497654421350}
   - component: {fileID: 4111632392275231197}
+  - component: {fileID: 5324827458507598787}
   m_Layer: 0
   m_Name: plastic
   m_TagString: Barrel
@@ -176,3 +177,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHit: 2
+--- !u!95 &5324827458507598787
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5192620818528737594}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1b532a0e3346a7c4c937f39d5f02a6fd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

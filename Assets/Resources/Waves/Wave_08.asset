@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89961b4f9374cf844867ee6d969148f9, type: 3}
+  m_Name: Wave_08
+  m_EditorClassIdentifier: 
+  barrels:
+  - barrelPrefab: {fileID: 4139833152112879336, guid: 2ca2304606a4d2247b45df73d4b73e7e, type: 3}
+    jumlah: 33
+  - barrelPrefab: {fileID: 5192620818528737594, guid: 186ed44769e55b040995224424c82f44, type: 3}
+    jumlah: 22
+  chests:
+  - chestPrefab: {fileID: 7741713803984928606, guid: 8516fcffb24a9f34989f7bf7b9ca9a6c, type: 3}
+    jumlah: 2
+  spawnSpeed: 1.8
+  barrelSpeed: 4

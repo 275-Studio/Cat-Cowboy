@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Sniper
   bulletPrefab: {fileID: 7487784241290382838, guid: 33d83a5bdac29c448b83020c1e31eb6d, type: 3}
+  hasThisWeapon: 0

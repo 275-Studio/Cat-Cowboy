@@ -44,11 +44,11 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Object
-    uniqueID: 204154909
-    locked: 0
   - name: Home
     uniqueID: 4070192613
+    locked: 0
+  - name: Object
+    uniqueID: 204154909
     locked: 0
   m_RenderingLayers:
   - Default

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Shotgun
   bulletPrefab: {fileID: 91803584395833600, guid: e75e43f817a04ce418a8287beb381482, type: 3}
+  hasThisWeapon: 0

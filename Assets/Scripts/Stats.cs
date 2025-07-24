@@ -24,12 +24,14 @@ public class PlayerStats
     public float bulletSpeed;
     public int maxBulletCapacity;
     public int coin;
+    public int destroyedBarrels;
 }
 
 [System.Serializable]
 public class ItemUpgrade
 {
     public int bomb;
+    public float timeFrezee;
 }
 [System.Serializable]
 public class BarrelData
@@ -37,4 +39,9 @@ public class BarrelData
     public GameObject barrelPrefab;
     public int jumlah;
 }
-
+[System.Serializable]
+public class ChestData
+{
+    public GameObject chestPrefab;
+    public int jumlah;
+}
