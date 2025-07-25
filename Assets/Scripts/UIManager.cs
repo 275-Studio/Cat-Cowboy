@@ -11,13 +11,11 @@ public class UIManager : MonoBehaviour
     public GameObject inGameUI;
     public GameObject gameOverUI;
     public GameObject starterPanel;
-
     [Header("UI Containers")]
     public Transform bulletContainer;
     public Transform reloadSpeedContainer;
     public Transform bulletSpeedContainer;
     public Transform bulletCapacity;
-
     [Header("Prefabs & Sprites")]
     public GameObject bulletPrefab;
     public GameObject barPrefab;
@@ -43,7 +41,6 @@ public class UIManager : MonoBehaviour
         gameOverUI.SetActive(false);
         continueButton.onClick.AddListener(OnContinueButtonClicked);
     }
-
     private void Start()
     {
         playerStats = ItemStat.instance.stats.playerStats;
@@ -54,12 +51,10 @@ public class UIManager : MonoBehaviour
         GenerateBulletSpeedUI();
         GenerateBulletCapacityUI();
     }
-
     private void Update()
     {
         setText();
     }
-
     public void GenerateBulletsUI()
     {
         foreach (Transform child in bulletContainer)
@@ -192,7 +187,7 @@ public class UIManager : MonoBehaviour
         {
             upgrade.timeFrezee -= 1f;
             waveController.ActivateTimeFreeze();
-            Debug.Log("Skill Time Freeze digunakan. Sisa: " + upgrade.timeFrezee);
+            Debug.Log("Skill Time Freeze digunakan. Sisa: ");
         }
         else
         {
@@ -219,7 +214,23 @@ public class UIManager : MonoBehaviour
     {
         buildingHealthText.text = homeStats.currentHealthHome.ToString();
         coinText.text = playerStats.coin.ToString();
-        scoreText.text = playerStats.destroyedBarrels.ToString();
+        scoreText.text = playerStats.score.ToString();
+        destroyedBarrelText.text = playerStats.destroyedBarrel.ToString();
+    }
+
+    public void OnClick_BombSkill()
+    {
+        var upgrade = ItemStat.instance.stats.itemUpgrade;
+
+        if (upgrade.bomb > 0)
+        {
+            upgrade.bomb -= 1;
+            waveController.ActivateBombSkill();
+        }
+        else
+        {
+            Debug.Log("Bombnya ngga ada");
+        }
     }
     
 }
