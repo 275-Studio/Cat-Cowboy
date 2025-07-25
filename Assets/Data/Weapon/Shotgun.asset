@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   weaponName: Shotgun
+  weaponSprite: {fileID: 21300000, guid: 3fdd93f4fc7c9e2428997f2b962bb4d3, type: 3}
   bulletPrefab: {fileID: 91803584395833600, guid: e75e43f817a04ce418a8287beb381482, type: 3}
   hasThisWeapon: 0

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: pistol
   m_EditorClassIdentifier: 
   weaponName: pistol
+  weaponSprite: {fileID: 21300000, guid: 062dda64180d0554d975cc025ece295e, type: 3}
   bulletPrefab: {fileID: 7487784241290382838, guid: c137faafff67227439fc100aef40c5d7, type: 3}
   hasThisWeapon: 1
