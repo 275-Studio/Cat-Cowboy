@@ -9,7 +9,6 @@ public class UpgradeButtonHandler : MonoBehaviour
     public HomeController homeController;
     public PlayerStats playerStats;
     public HomeStats homeStats;
-    private float minReloadTime = 0.5f;
 	public UIManager uiManager;
 
     private void Start()
@@ -49,7 +48,10 @@ public class UpgradeButtonHandler : MonoBehaviour
                 break;
             // buy time freeze skill
             case 9:
-                BuySkillTimeSlow(btnIndex);
+                BuySkillTimeSlow();
+                break;
+            case 10:
+                BuySkillBomb();
                 break;
             default:
                 Debug.LogWarning("Index upgrade/senjata tidak dikenali!");
@@ -183,13 +185,13 @@ public class UpgradeButtonHandler : MonoBehaviour
             Debug.Log("Tidak bisa upgrade reload time lebih lanjut atau koin tidak cukup.");
         }
     }
-    private void BuySkillTimeSlow(int btnIndex)
+    private void BuySkillTimeSlow()
     {
         var upgrade = ItemStat.instance.stats.itemUpgrade;
 
         if (upgrade.timeFrezee <= 0f)
         {
-            int skillPrice = 500;
+            int skillPrice = 400;
 
             if (playerStats.coin >= skillPrice)
             {
