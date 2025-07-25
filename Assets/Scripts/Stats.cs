@@ -24,7 +24,8 @@ public class PlayerStats
     public float bulletSpeed;
     public int maxBulletCapacity;
     public int coin;
-    public int destroyedBarrels;
+    public int score;
+    public int destroyedBarrel;
 }
 
 [System.Serializable]

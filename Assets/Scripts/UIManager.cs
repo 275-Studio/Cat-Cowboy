@@ -31,12 +31,11 @@ public class UIManager : MonoBehaviour
     [Header("Text")]
     public TextMeshProUGUI coinText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI destroyedBarrelText;
     [Header("Data")]
     private PlayerStats playerStats;
     private HomeStats homeStats;
-    
     private bool waitingForContinue = false;
-
     private void Awake()
     {
         waveClearPanel.SetActive(false);
