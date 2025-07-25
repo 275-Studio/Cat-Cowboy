@@ -260,4 +260,20 @@ public class WaveController : MonoBehaviour
         Debug.Log("Barrels restored: " + affected);
         Debug.Log("Time Freeze ENDED");
     }
+
+    public void ActivateBombSkill()
+    {
+        int destroyedCount = 0;
+
+        foreach (GameObject barrel in spawnedBarrels)
+        {
+            if (barrel != null)
+            {
+                Destroy(barrel);
+                destroyedCount++;
+            }
+        }
+        ItemStat.instance.stats.playerStats.destroyedBarrel += destroyedCount;
+        spawnedBarrels.Clear();
+    }
 }
