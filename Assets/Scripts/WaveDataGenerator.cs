@@ -21,7 +21,7 @@ public class WaveDataGenerator : MonoBehaviour
             wave.barrels = new List<BarrelData>();
             wave.chests = new List<ChestData>();
 
-            int baseJumlah = 40 + i * 2;
+            int baseJumlah = 50 + i * 2;
 
             if (i < 5)
             {

@@ -45,6 +45,7 @@ public class WaveController : MonoBehaviour
     private IEnumerator StarterThenSpawnWave()
     {
         yield return StartCoroutine(uiManager.ShowStarterPanel());
+        Time.timeScale = 1f;
         StartCoroutine(SpawnWave());
     }
     void LoadWaves()
@@ -88,9 +89,9 @@ public class WaveController : MonoBehaviour
 
         EndWave();
         yield return StartCoroutine(uiManager.WaitForContinue());
-        playerController.ResetAmmoToMax();
         currentWaveIndex++;
         StartCoroutine(SpawnWave());
+        
     }
 
     IEnumerator SpawnBarrelBatch(BarrelData barrel, float spawnDelay)
@@ -180,6 +181,7 @@ public class WaveController : MonoBehaviour
         ItemStat.instance.stats.homeStats.currentHealthHome = ItemStat.instance.stats.homeStats.maxHealthHome;
         ItemStat.instance.stats.playerStats.coin += 100;
         uiManager.ShowWaveClear();
+        playerController.ResetAmmoToMax();
     }
 
     public void ResetWaves()
