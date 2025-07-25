@@ -208,4 +208,27 @@ public class UpgradeButtonHandler : MonoBehaviour
         }
     }
 
+    private void BuySkillBomb()
+    {
+        var upgrade = ItemStat.instance.stats.itemUpgrade;
+        if (upgrade.bomb <= 0)
+        {
+            int skillPrice = 200;
+            if (playerStats.coin >= skillPrice)
+            {
+                playerStats.coin -= skillPrice;
+                upgrade.bomb += 1;
+                Debug.Log("Skill Bomb udah dibeli");
+            }
+            else
+            {
+                Debug.Log("Koin e kurang");
+            }
+        }
+        else
+        {
+            Debug.Log("Udah punya skill bomb");
+        }
+    }
+
 }
