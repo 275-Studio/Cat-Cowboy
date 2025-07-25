@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Barrel : MonoBehaviour
 {
-    public int maxHit = 3;
+    public int maxHit;
 
     public void TakeHit()
     {

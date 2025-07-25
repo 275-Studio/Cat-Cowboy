@@ -32,11 +32,12 @@ public class ItemStat : MonoBehaviour
             },
             playerStats = new PlayerStats
             {
-                coin = 1000,
+                coin = 100,
                 reloadTime = 2f,
                 bulletSpeed = 3f,
                 maxBulletCapacity = 10,
-                destroyedBarrels = 0,
+                score = 0,
+                destroyedBarrel = 0,
             },
             itemUpgrade = new ItemUpgrade
             {

@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     [Header("Reloading State")]
     private bool isReloading = false;
     private int currentBullet;
+    [SerializeField] private float pointerRadius = 2f;
+    [SerializeField] private Transform pointer;
+    [SerializeField] private SpriteRenderer pointerRenderer;
 
     private void Start()
     {
@@ -39,8 +42,14 @@ public class PlayerController : MonoBehaviour
     private void AimAtMouse()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f;
         Vector2 direction = mousePosition - transform.position;
         transform.up = direction;
+        if (pointer != null)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            pointer.rotation = Quaternion.Euler(0, 0, angle);
+        }
     }
 
     private void HandleShooting()
@@ -53,12 +62,6 @@ public class PlayerController : MonoBehaviour
             Shoot();
             currentBullet--;
             bulletsUIManager.RemoveBulletUI();
-
-            // Auto-reload DIBATALKAN — sekarang reload hanya lewat HandleReload()
-            // if (currentBullet == 0)
-            // {
-            //     StartCoroutine(Reload());
-            // }
         }
     }
 
@@ -74,17 +77,20 @@ public class PlayerController : MonoBehaviour
     {
         if (index < 0 || index >= weapons.Length)
             return;
-
         if (!weapons[index].hasThisWeapon)
         {
             Debug.Log("gak punya senjata ini!");
             return;
         }
-
         currentWeaponIndex = index;
         currentBullet = playerStats.maxBulletCapacity;
         isReloading = false;
+        if (pointerRenderer != null && CurrentWeapon.weaponSprite != null)
+        {
+            pointerRenderer.sprite = CurrentWeapon.weaponSprite;
+        }
     }
+
 
     public void HandleWeaponSwitch()
     {
@@ -161,4 +167,5 @@ public class PlayerController : MonoBehaviour
         currentBullet = playerStats.maxBulletCapacity;
         bulletsUIManager.GenerateBulletsUI();
     }
+    
 }
